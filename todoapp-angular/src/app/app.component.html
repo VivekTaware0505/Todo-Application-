@@ -1,0 +1,65 @@
+<div class="container-fluid">
+
+  <div class="row bg-success text-center text-light">
+
+    <div class="col-md-12">
+      <h1>
+        Todo App</h1>
+
+    </div>
+
+  </div>
+
+  <div class="row mt-5 justify-content-center">
+
+    <div class="col-md-4">
+
+
+      <form action="" class="d-flex justify-content-center gap-3">
+        <div class="form-group">
+
+          <input type="text" class="form-control" id="task" name="task" [(ngModel)]="task">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="addTask()">Add Task</button>
+      </form>
+
+
+
+    </div>
+
+
+    <div class="row mt-5 justify-content-center">
+      <div class="col-md-4">
+
+        <ul class="list-group">
+
+
+          @for (item of tasks; track $index) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+
+
+            <input type="checkbox" (change)="taskDone(item)" [checked]="item.status" class="form-check-input">
+
+            <span [ngStyle]="{'text-decoration': item.status ? 'line-through' : 'none'}">
+              {{ item.title}}</span>
+
+            <div class="float-right d-flex gap-3">
+
+              <button class="btn btn-danger float-right" (click)="deleteTask(item.id)">Delete</button>
+
+
+
+              <button class="btn btn-warning float-right" (click)="updateTask(item)">Edit</button>
+            </div>
+
+          </li>
+          }
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  </div>

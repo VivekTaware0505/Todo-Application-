@@ -1,0 +1,10 @@
+FROM maven:3.6.3-openjdk-17 As build
+
+COPY src /home/app/src
+COPY pom.xml /home/app
+WORKDIR /home/app
+RUN mvn clean package -DskipTests
+
+EXPOSE 9595
+
+ENTRYPOINT ["java","-jar","/home/app/target/todoapp.jar"]
